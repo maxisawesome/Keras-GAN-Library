@@ -29,6 +29,18 @@ def build_generator(input_shape):
     model.add(Conv2DTranspose(64,(3,3),strides=(2,2),padding="same"))
     model.add(LeakyReLU(0.2))
 
+    model.add(Conv2DTranspose(32,(3,3),strides=(2,2),padding="same"))
+    model.add(LeakyReLU(0.2))
+
+    model.add(Conv2DTranspose(16,(3,3),strides=(2,2),padding="same"))
+    model.add(LeakyReLU(0.2))
+
+    model.add(Conv2DTranspose(16,(3,3),strides=(2,2),padding="same"))
+    model.add(LeakyReLU(0.2))
+
+    model.add(Conv2DTranspose(16,(3,3),strides=(2,2),padding="same"))
+    model.add(LeakyReLU(0.2))
+
     model.add(Conv2D(3,(3,3),padding="same",activation="tanh"))
     return model
 
@@ -37,6 +49,12 @@ def build_discriminator(input_shape):
     model = Sequential()
 
     model.add(SNConv2D(64,(3,3),strides=(2,2),padding="same",input_shape=input_shape))
+    model.add(LeakyReLU(0.2))
+
+    model.add(SNConv2D(64,(3,3),strides=(2,2),padding="same"))
+    model.add(LeakyReLU(0.2))
+
+    model.add(SNConv2D(64,(3,3),strides=(2,2),padding="same"))
     model.add(LeakyReLU(0.2))
 
     model.add(SNConv2D(128,(3,3),strides=(2,2),padding="same"))
